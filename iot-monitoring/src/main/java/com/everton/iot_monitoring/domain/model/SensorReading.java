@@ -2,7 +2,6 @@ package com.everton.iot_monitoring.domain.model;
 
 import com.everton.iot_monitoring.domain.enums.DataSource;
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,24 +14,22 @@ public class SensorReading {
 
     private Double temperature;
     private Double humidity;
-
-    @Column(nullable = false)
     private String deviceId;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private DataSource dataSource;
 
-    @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    public SensorReading() {
-    }
+    // 🔹 JPA exige construtor vazio
+    protected SensorReading() {}
 
-    public SensorReading(Double temperature,
-                         Double humidity,
-                         String deviceId,
-                         DataSource dataSource) {
+    public SensorReading(
+            Double temperature,
+            Double humidity,
+            String deviceId,
+            DataSource dataSource
+    ) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.deviceId = deviceId;
@@ -40,5 +37,11 @@ public class SensorReading {
         this.createdAt = LocalDateTime.now();
     }
 
-    // getters e setters
+    // 🔹 GETTERS (ESSENCIAL)
+    public Long getId() { return id; }
+    public Double getTemperature() { return temperature; }
+    public Double getHumidity() { return humidity; }
+    public String getDeviceId() { return deviceId; }
+    public DataSource getDataSource() { return dataSource; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
 }

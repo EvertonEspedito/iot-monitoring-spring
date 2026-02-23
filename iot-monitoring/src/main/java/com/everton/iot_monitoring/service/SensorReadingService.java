@@ -24,7 +24,7 @@ public class SensorReadingService {
                 dto.getTemperature(),
                 dto.getHumidity(),
                 dto.getDeviceId(),
-                DataSource.SIMULATED
+                DataSource.DEVICE
         );
 
         return repository.save(reading);
@@ -34,4 +34,6 @@ public class SensorReadingService {
     public List<SensorReading> list() {
         return repository.findAll();
     }
+
+
 }

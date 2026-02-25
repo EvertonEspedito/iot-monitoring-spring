@@ -14,12 +14,19 @@ public class DashboardService {
     }
 
     public DashboardSummaryDTO getSummary() {
+
+        long total = repository.count();
+        Double avgTemp = repository.avgTemperature();
+        Double minTemp = repository.minTemperature();
+        Double maxTemp = repository.maxTemperature();
+        Double avgHumidity = repository.avgHumidity();
+
         return new DashboardSummaryDTO(
-                repository.countAll(),
-                repository.avgTemperature(),
-                repository.minTemperature(),
-                repository.maxTemperature(),
-                repository.avgHumidity()
+                total,
+                avgTemp,
+                minTemp,
+                maxTemp,
+                avgHumidity
         );
     }
 }

@@ -4,7 +4,11 @@ import com.everton.iot_monitoring.domain.model.SensorReading;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 public interface SensorReadingRepository extends JpaRepository<SensorReading, Long> {
+
+    List<SensorReading> findByDeviceId(String deviceId);
 
     @Query("SELECT COUNT(sr) FROM SensorReading sr")
     long countAll();

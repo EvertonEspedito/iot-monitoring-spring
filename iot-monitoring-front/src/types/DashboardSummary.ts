@@ -1,6 +1,7 @@
 export interface DashboardSummary {
-  avgTemperature: number;
-  avgHumidity: number;
   totalReadings: number;
-  lastDeviceId: string;
+  avgTemperature: number;
+  minTemperature: number;
+  maxTemperature: number;
+  avgHumidity: number;
 }

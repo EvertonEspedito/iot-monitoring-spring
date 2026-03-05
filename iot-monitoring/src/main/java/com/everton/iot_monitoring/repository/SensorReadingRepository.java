@@ -10,6 +10,9 @@ public interface SensorReadingRepository extends JpaRepository<SensorReading, Lo
 
     List<SensorReading> findByDeviceId(String deviceId);
 
+    List<SensorReading> findTop30ByOrderByCreatedAtDesc();
+
+
     @Query("SELECT COUNT(sr) FROM SensorReading sr")
     long countAll();
 

@@ -4,6 +4,8 @@ import type { DashboardSummary } from "../types/DashboardSummary";
 
 import "../styles/dashboard.css";
 
+const TEMPERATURE_LIMIT = 30;
+
 export default function Dashboard() {
   const [summary, setSummary] = useState<DashboardSummary | null>(null);
 
@@ -29,9 +31,19 @@ export default function Dashboard() {
           <p>{summary.totalReadings}</p>
         </div>
 
-        <div className="card">
+        <div
+          className={`card ${
+            summary.avgTemperature > TEMPERATURE_LIMIT ? "alert" : ""
+          }`}
+        >
           <h3>Temperatura Média</h3>
           <p>{summary.avgTemperature.toFixed(1)} °C</p>
+
+          {summary.avgTemperature > TEMPERATURE_LIMIT && (
+            <span className="warning-text">
+              ⚠ Temperatura acima do limite!
+            </span>
+          )}
         </div>
 
         <div className="card">

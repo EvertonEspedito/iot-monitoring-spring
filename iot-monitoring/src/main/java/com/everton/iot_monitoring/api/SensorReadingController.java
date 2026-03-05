@@ -43,4 +43,8 @@ public class SensorReadingController {
     ) {
         return service.findByDevice(deviceId);
     }
+    @GetMapping("/latest")
+    public List<SensorReadingResponseDTO> latest() {
+        return service.getLatest30();
+    }
 }

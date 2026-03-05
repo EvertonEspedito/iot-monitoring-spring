@@ -63,4 +63,12 @@ public class SensorReadingService {
                 .map(this::toDTO)
                 .toList();
     }
+
+    public List<SensorReadingResponseDTO> getLatest30() {
+        return repository
+                .findTop30ByOrderByCreatedAtDesc()
+                .stream()
+                .map(this::toDTO)
+                .toList();
+    }
 }
